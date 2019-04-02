@@ -135,7 +135,7 @@ def CustomCompile(code):
 	temp.write(code)
 	f = str(temp.name)
 	temp.close()
-	os.chmod(f, 777)
+	os.chmod(f, 0o777)
 
 	process = Popen(f, stdout=PIPE, stderr=PIPE, shell=False)
 	stdout, stderr = process.communicate()
