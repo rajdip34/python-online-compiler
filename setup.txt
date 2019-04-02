@@ -1,0 +1,9 @@
+1. install python 3.6.3
+2. create virtual env
+3. pip install -r requirment.txt
+4. create database demoapp in mysql
+5. mysql -p demoapp < dempapp.sql
+6. python manage.py runserver
+
+username:admin
+password: admin@4321

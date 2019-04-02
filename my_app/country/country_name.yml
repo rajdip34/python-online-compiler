@@ -1,0 +1,16 @@
+Example endpoint Country Details
+In this example the specification is taken from external YAML file
+
+---
+tags:
+    -   Country
+parameters:
+    -   name: name
+        in: path
+        type: string
+        required: false
+responses:
+  200:
+    description: Country details Object
+    examples:
+      id: {}

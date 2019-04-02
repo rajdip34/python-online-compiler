@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name='description' content='Compiler HTML Template'>
+    <meta name='keywords' content='free, template, modern, bootstrap, jquery, design'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/bootstrap/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/font-awesome/css/font-awesome.min.css'>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/custom.css'>
+    <script type='text/javascript' src='/static/editor_src/js/jquery/jquery-3.3.1.min.js'></script>
+    <script type='text/javascript' src='/static/editor_src/js/jquery/Chart.min.js'></script>
+    <script type='text/javascript' src='/static/editor_src/js/jquery-ui.min.js'></script>
+    <script type='text/javascript' src='/static/editor_src/js/autocomplete-0.3.0.min.js'></script>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/autocomplete-0.3.0.min.css'>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/jquery-ui.min.css'>
+    <link rel='stylesheet' href='/static/editor_src/CodeMirror/lib/codemirror.css'>
+    <link rel='stylesheet' href='/static/editor_src/CodeMirror/addon/hint/show-hint.css'>
+    <script src='/static/editor_src/CodeMirror/lib/codemirror.js'></script>
+    <script src='/static/editor_src/CodeMirror/addon/hint/show-hint.js'></script>
+    <script src='/static/editor_src/CodeMirror/addon/hint/javascript-hint.js'></script>
+    <script src='/static/editor_src/CodeMirror/addon/edit/closebrackets.js'></script>
+    <script src='/static/editor_src/CodeMirror/addon/edit/matchbrackets.js'></script>
+    <script src='/static/editor_src/CodeMirror/mode/javascript/javascript.js'></script>
+    <script src='/static/editor_src/js/python-hint.js'></script>
+    <script src='/static/editor_src/js/file-manage.js'></script>
+    <!-- <script src='core/python_libs_js.py' type='text/javascript'></script> -->
+    <script src='/static/editor_src/CodeMirror/mode/markdown/markdown.js'></script>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/show-hint.css'>
+    <link rel='stylesheet' type='text/css' href='/static/editor_src/css/simple-hint.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/editor_src/css/mycss.css">
+    
+    <script type='text/javascript' src='/static/editor_src/js/bootstrap/bootstrap.min.js'></script>
+</head>
+
+<body>
+    <div id="form">
+        <div class='row'>
+            <div class='row'>
+                <div class='input-group pull-left cus-row1'>
+                    <span class="filesbtn btn-theme" style="font-size:14px;cursor:pointer;margin-right: 15px;" onclick="openNav()">Files</span>
+                    
+                    <button type='submit' class='right btn btn-success btn-theme run-btn' name='run' id='run' style="margin-right: 15px;">Run
+                        <i class='fa fa-random'></i>
+                    </button>
+<input type="button" name="save" id="save_btn" value="" style="background: transparent;outline: none;cursor: none;margin: none;margin-right: 15px;border: none;">
+
+                    <script>
+                        function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+</script>
+                    <input type='text' placeholder='Enter the File Name' id='searchkey' class="srch-inp" style='width: 300px;'>
+                </div>
+            </div>
+            <div class='row row2nd'>
+                <div class='pull-left'>
+                    <div id='editor' class="cus-editor">
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <div class="myrow">
+                                <div class="cus-col">Files</div>
+                                <div class="cus-col add-file-root" data-path="{{rootpath}}">
+                                    <label class="add-file" for="files"><i class="fas fa-file-signature"></i></label>
+                                    
+                                </div>
+                                <div class="cus-col add-folder-root" data-path="{{rootpath}}">
+                                    <label class="add-folder" for="folderss"><i class="fas fa-folder-plus"></i></label>
+                                </div>
+                                <div class="cus-col">
+                                    <div class="btn-group">
+                                        <a class="btn dropdown-toggle cus-tgl-btn" data-toggle="dropdown" href="#">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <ul class="dropdown-menu cus-drop">
+                                            <li><label for="filess">Upload file</label>
+                                                <input id="filess" type="file" style="visibility:hidden; display: none;" class="myinp" placeholder="file" />
+                                            </li>
+                                            <li>
+                                                <label for="folderrss">Upload folder</label>
+                                                <input id="folderrss" type="file" webkitdirectory mozdirectory style="visibility:hidden; display: none;" class="myinp" placeholder="folder" />
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="wrapper">
+                                <div class="bonsai">
+                                    <ul class="section">
+                                        {{nav}}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+                            <script src="/static/editor_src/assets/js/vendor/bonsai.min.js"></script>
+                            <script src="/static/editor_src/assets/js/main-dev.js"></script>
+                        </div>
+                        <div id="main">
+                            <textarea id='code' name='code' style='min-height: 100%;'></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class='pull-right result_part cus-rslt'>
+                    <div class='diagram'>
+                        <div class='pull-left bg_diag cus-bg_diag'>
+                            <input type='text' class='form-control date' id='start' placeholder='08/01/2011' style='height:30px;width:120px;'> to
+                            <input type='text' class='date' id='end' placeholder='08/01/2017' style='height:30px;width:120px;'>
+                            <div class='input-group'>
+                                <span class='input-group-addon'>$
+                                </span>
+                                <input id='money' type='text' value='100000' style='height:30px;width:130px;'>
+                                <select id='equlity' class='btn-default btn'>
+                                    <option>US Equlities
+                                    <option>Rus Equlities
+                                    <option>UK Equlities
+                                </select>
+                                <input type='button' class='btn-primary pull-right cus-bkt btn-theme' id='run_full' value='Run Full Backtest'>
+                            </div>
+                        </div>
+                    </div>
+                    <div style='margin: 0 0 0 5px' id='line' class="cus-diag">
+                        <div class='row diag-bg'>
+                            <div class='status'>
+                                <div class='col1'>
+                                    <p>RETURNS&nbsp;&nbsp;
+                                    </p>
+                                    <p>3.98%
+                                    </p>
+                                </div>
+                                <div class='col1'>
+                                    <p>ALPHA&nbsp;&nbsp;
+                                    </p>
+                                    <p>3.98%
+                                    </p>
+                                </div>
+                                <div class='col-md-1'>
+                                    <p>BETA&nbsp;&nbsp;
+                                    </p>
+                                    <p>0.05%
+                                    </p>
+                                </div>
+                                <div class='col-md-1'>
+                                    <p>SHARPE&nbsp;&nbsp;
+                                    </p>
+                                    <p>3.34%
+                                    </p>
+                                </div>
+                                <div class='col-md-1'>
+                                    <p>DRADOWN&nbsp;&nbsp;
+                                    </p>
+                                    <p>-2.01%
+                                    </p>
+                                </div>
+                            </div>
+                            <canvas id='line-chart'></canvas>
+                        </div>
+                    </div>
+                    <div class='log_part log-part-cus'>
+                        <div class='tab-content cus-tab-cont'>
+                            <div id='log_detail' class='tab-pane fade in active cus-tab-pan'>
+                               <h3 class="btm-h3" style="font-family: &quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size: 23px;font-weight: 150;">Your compile result is :</h3>
+                                <pre></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type='text/javascript' src='/static/editor_src/js/custom.js'>
+        </script>
+        <script type='text/javascript'>
+            Chart.defaults.global.elements.line.fill = false;
+        </script>
+    </div>
+
+<div class="modal fade" id="rename_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="padding: 4px 12px">
+        <p>Enter new name : </p>
+      <input type="text" class="form-control" id="rename_name">
+    </div>
+    <div class="modal-footer">
+        <button class="btn-success" id="rename_btn">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script >
+
+
+$("#editor").keypress(function (e) {
+		text = '';
+		lines = editorHolder.doc.children[0].lines;
+		for (var i = 0; i <lines.length ; i++)
+			text += lines[i].text + "\n";
+		$.post('core/commander.py',{'type':'savefile','path':currentPath,'text':text},function(d){
+			if($(".bonsai").html().indexOf(currentPath)==-1){
+				out = $(d);
+				out.addClass('hsel');
+		    	set_events(out);
+	    		$(".bonsai>.section").append(out);
+	    	}
+			updateLibsAndMethods();
+			doautosave();
+		});
+		e.stopImmediatePropagation()
+	})
+
+
+
+</script >
+
+
+
+<script >(function ($) {
+	$.fn.afterPaste = function (options) {
+		var settings = {
+			delay: 300,
+			callback: function () {} };
+
+		options = $.extend(settings, options);
+		return this.each(function () {
+			var $element = $(this);
+			$element.on('paste', function () {
+				setTimeout(options.callback, options.delay);
+			});
+
+		});
+	};
+
+})(jQuery);
+
+$(function () {
+	$('#editor').afterPaste({
+		delay: 200,
+		callback: function () {
+
+			text = '';
+		lines = editorHolder.doc.children[0].lines;
+		for (var i = 0; i <lines.length ; i++)
+			text += lines[i].text + "\n";
+		$.post('core/commander.py',{'type':'savefile','path':currentPath,'text':text},function(d){
+			if($(".bonsai").html().indexOf(currentPath)==-1){
+				out = $(d);
+				out.addClass('hsel');
+		    	set_events(out);
+	    		$(".bonsai>.section").append(out);
+	    	}
+			updateLibsAndMethods();
+			doautosave();
+		});
+		e.stopImmediatePropagation()
+		} });
+
+});
+
+</script>
+
+
+</body>
+
+</html>

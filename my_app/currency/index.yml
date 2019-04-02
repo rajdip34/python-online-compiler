@@ -1,0 +1,41 @@
+Example endpoint returning index details
+In this example the specification is taken from external YAML file
+---
+tags:
+    -   Index
+parameters:
+    -   name: id
+        in: path
+        type: int
+        required: false
+#definitions:
+#  IndexID:
+#    type: object
+#    properties:
+#      palette_name:
+#        type: object
+#        items:
+#          $ref: '#/definitions/Id'
+#  Id:
+#    type: int
+responses:
+  200:
+    description: Index details Object
+    #schema:
+    #  $ref: '#/definitions/IndexID'
+    examples:
+      id: {
+              "2": {
+                "active": "0",
+                "bloombergid": "200",
+                "bloomebergticker": "Ticker1",
+                "currencyid": "2",
+                "indexcategoryid": "1",
+                "indexfamilyid": "1",
+                "indextypeid": "1",
+                "modifydatetime": "2016-05-02 00:00:00",
+                "modifyuserid": "Dhiraj",
+                "name": "Test",
+                "reutersric": "Ric1"
+              }
+            }

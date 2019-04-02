@@ -1,0 +1,15 @@
+Example endpoint returning index details
+In this example the specification is taken from external YAML file
+---
+tags:
+    -   Curreny
+parameters:
+    -   name: id
+        in: path
+        type: int
+        required: false
+responses:
+  200:
+    description: Curreny details
+    examples:
+      id: {}

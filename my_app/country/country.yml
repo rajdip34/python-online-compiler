@@ -1,0 +1,11 @@
+Example endpoint Industry Sector details
+In this example the specification is taken from external YAML file
+
+---
+tags:
+    - Country
+responses:
+  200:
+    description: Index details Object
+    examples:
+      id: {}

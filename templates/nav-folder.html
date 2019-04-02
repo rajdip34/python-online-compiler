@@ -1,0 +1,19 @@
+<li class="folder" data-path="{{path}}">
+    <a class="cus-bttn" href="#">
+        <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;<i class="far fa-folder"></i> {{title}}
+    </a>
+    <div class="btn-group cus-dd">
+        <a class="btn dropdown-toggle ddt" data-toggle="dropdown" href="#">
+            <i class="fas fa-ellipsis-v"></i>
+        </a>
+        <ul class="dropdown-menu cs-ddm">
+            <li><a href="#" class="rename">Rename</a></li>
+            <li><a href="#" class="add-file">Add file</a></li>
+            <li><a href="#" class="add-folder">Add folder</a></li>
+            <li><a href="#" class="text-error del">Delete</a></li>
+        </ul>
+    </div>
+    <ul class="section">
+        {{items|safe}}
+    </ul>
+</li>
